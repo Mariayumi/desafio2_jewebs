@@ -3,9 +3,9 @@ import Form from 'react-bootstrap/Form';
 function TextControlsExample(props) {
     return (
     <Form>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Group onChange={props.change} className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>{props.text}</Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control value={props.value} as="textarea" rows={3} />
         </Form.Group>
     </Form>
     );

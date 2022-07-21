@@ -1,17 +1,21 @@
 import BasicExample from "../../components/input/input";
 import TypesExample from "../../components/button/button";
+import { useNavigate } from "react-router-dom";
 import {useState} from 'react'
 import Tooltipone from "../../components/tooltip/tooltip";
+import { useForm } from "react-hook-form";
+
 
 function Cadastro() {
 
-    
+    const navigate = useNavigate()
+
     const [user, setUser] = useState({ nome: '', email: '', senha: '',nomeConjuge:'' ,emailConjuge: '', dataCasamento: '',enderecoSite: '', telefone: '' ,cidade: '', estado: ''});
 
     function mudarNome(event){
         setUser(({...user,nome: event.target.value }))
     }
-    
+
     function mudarEmail(event){
         setUser(({...user,email: event.target.value }))
     }
@@ -48,9 +52,10 @@ function Cadastro() {
         setUser(({...user,estado: event.target.value }))
     }
 
-
     const Submit = (event) =>{
         event.preventDefault()
+
+
         const usuarios = JSON.parse(localStorage.getItem("usuarios"))
         const usuarioExistente = usuarios?.filter((usuario) => {
             if (usuario.user.email == user.email){
@@ -69,9 +74,8 @@ function Cadastro() {
             }
             localStorage.setItem("usuarios",JSON.stringify(novoUsuario))
             console.log(JSON.parse(localStorage.getItem("usuarios")));
+            navigate('/')
         }
-
-
     }
 
     return(
@@ -80,15 +84,17 @@ function Cadastro() {
                 <h1>Cadastro</h1>
                 <h4>Dados pessoais</h4>
                 <form action="">
-                    <BasicExample change={(e)=>mudarNome(e)} title1="Nome completo" type="text" id="name" class="mb-3" />
-                    <div className="row">
-                        <BasicExample change={(e)=>mudarTelefone(e)} title1="Telefone" type="number" id="telefone" class="mb-3 col-12" />
-                        <BasicExample change={(e)=>mudarEmail(e)} title1="E-mail" type="email" id="email" class="mb-3 col-6" />
-                        <BasicExample change={(e)=>mudarSenha(e)} title1="Senha" type="password" id="senha" class="mb-3 col-5" length="8"/>
-                        <div className="col-1">
-                            <Tooltipone class=""/>
+                    <BasicExample change={(e)=>mudarNome(e)} title1="Nome completo" type="text" id="name" class="mb-3"/>
+                    <form >
+                        <div className="row">
+                            <BasicExample change={(e)=>mudarTelefone(e)} title1="Telefone" type="number" id="telefone" class="mb-3 col-12" />
+                            <BasicExample change={(e)=>mudarEmail(e)} title1="E-mail" type="email" id="email" class="mb-3 col-6" />
+                            <BasicExample change={(e)=>mudarSenha(e)} title1="Senha" type="password" id="senha" class="mb-3 col-5" />
+                            <div className="col-1">
+                                <Tooltipone class=""/>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </form>
                 <hr />
                 <h4>Dados do conjuge</h4> 

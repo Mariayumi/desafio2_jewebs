@@ -5,6 +5,7 @@ import {useState} from "react"
 
 function Login() {
     const [user, setUser] = useState({email: '', senha: ''});
+    const navigate = useNavigate()
 
     function mudarEmail(event){
         setUser(({...user,email: event.target.value }))
@@ -20,13 +21,12 @@ function Login() {
         usuarios?.filter((usuario) => {
             if(usuario.user.email == user.email & usuario.user.senha == user.senha){
                 localStorage.setItem("usuarioLogado", JSON.stringify(usuario))   
-                console.log(usuario);
             
             }
         }) 
         const usuarioEncontrado = JSON.parse(localStorage.getItem("usuarioLogado"))
         if(usuarioEncontrado){
-            alert('logado')
+            navigate('/perfil')
         }else{
             alert("Email e/ou senha incorretos")
         }
