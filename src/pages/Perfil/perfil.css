@@ -1,0 +1,22 @@
+.conteudo{
+    background-color: #ffff;
+    width: 700px;
+    height: fit-content;
+    margin: 30px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.foto{
+    background-color: aquamarine;
+    width: 150px;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.imagem{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

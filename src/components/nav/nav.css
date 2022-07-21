@@ -1,0 +1,17 @@
+.flex-column{
+    background-color: #199FB0 !important;
+    border-radius: 0px 15px 15px 0px;
+}
+
+.linknav{
+    color: #002B3F !important;
+    font-weight: 600 !important;
+}
+
+.linknav:hover{
+    color: #F53E4A !important;
+}
+
+.navbar{
+    height: 752px;
+}

@@ -1,0 +1,43 @@
+body{
+    background-color: #D0E3E8 !important;
+}
+
+.app{
+    background-color: #FFFFFF;
+    width: 500px;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+h1{
+    color:#E96774 !important;
+}
+
+h1, p{
+    text-align: center;
+}
+
+label, h2, h3, p, h4{
+    color:#002B3F !important;
+}
+
+p > a{
+    color: #E96774 !important;
+}
+
+.caixa{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.botaologin{
+    background-color: #F53E4A !important;
+}
+
+input{
+    border-color: #179FB0 !important;
+    border-width: 2px !important;
+}
