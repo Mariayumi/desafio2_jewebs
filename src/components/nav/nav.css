@@ -8,10 +8,11 @@
     font-weight: 600 !important;
 }
 
-.linknav:hover{
+.linknav > h4:hover{
     color: #F53E4A !important;
 }
 
 .navbar{
     height: 752px;
 }
+

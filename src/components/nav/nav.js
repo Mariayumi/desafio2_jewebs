@@ -14,9 +14,9 @@ function StackedExample() {
     return (
     <Nav defaultActiveKey="/home" className="flex-column col-2 navbar">
         <div>
-            <Nav.Link href="/Perfil" className="linknav"><i class="fa-solid fa-user"></i>Perfil</Nav.Link>
-            <Nav.Link href="/Casal" className="linknav"><i class="fa-solid fa-children"></i>Informações do casal</Nav.Link>
-            <Nav.Link onClick={(e) => logout(e)} className="linknav"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sair</Nav.Link>
+            <Nav.Link href="/Perfil" className="linknav"><h4><i class="fa-solid fa-user"></i> Perfil</h4></Nav.Link>
+            <Nav.Link href="/Casal" className="linknav"><h4><i class="fa-solid fa-children"></i> Casal</h4></Nav.Link>
+            <Nav.Link onClick={(e) => logout(e)} className="linknav"><h4><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</h4></Nav.Link>
         </div>
     </Nav>
     );
