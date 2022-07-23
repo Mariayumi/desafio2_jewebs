@@ -36,7 +36,7 @@ function Login() {
         <div className="caixa">
             <div className="app">
                 <h1>Log in</h1>
-                <BasicExample click={(e)=>Submit(e)} changeSenha={(e)=>mudarSenha(e)} changeEmail={(e)=>mudarEmail(e)}/>
+                <BasicExample click={(e)=>Submit(e)} changeSenha={(e)=>mudarSenha(e)} changeEmail={(e)=>mudarEmail(e)} id="botaologin"/>
                 <hr></hr>
                 <p><a href="/esquecisenha">Esqueceu a senha?</a></p>
                 <p>Ainda não possui cadastro? <a href="/cadastro">Cadastre-se aqui!</a></p>

@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 import {useState} from 'react'
 import Tooltipone from "../../components/tooltip/tooltip";
 import { useForm } from "react-hook-form";
+import './teste.css'
 
 function Cadastro() {
-    // validar email
-    const [error, setError] = useState(null);
     
     const navigate = useNavigate()
 
@@ -18,37 +17,12 @@ function Cadastro() {
         setUser(({...user,nome: event.target.value }))
     }
 
-    //function isValidEmail(email) {
-    //    return /\S+@\S+\.\S+/.test(email);
-    //}
-
-    
-
-    // validar email
     function mudarEmail(event){
         setUser(({...user,email: event.target.value }))
-
-        //if (!isValidEmail(event.target.value)) {
-        //    setError('Email inválido');
-
-        //    document.getElementById('botaodis').setAttribute("disabled","disabled");
-
-        //} else {
-        //    setError(null);
-
-        //    document.getElementById('botaodis').removeAttribute("disabled");
-        //}
     }
 
     function mudarSenha(event){
         setUser(({...user,senha: event.target.value }))
-
-        //if (!isValidPassword(event.target.value)) {
-        //    setError('Senha inválido');
-
-        //} else {
-        //    setError(null);
-        //}
     }
 
     function mudarNomeConjuge(event){
@@ -57,13 +31,6 @@ function Cadastro() {
 
     function mudarEmailConjuge(event){
         setUser(({...user,emailConjuge: event.target.value }))
-
-        //if (!isValidEmail(event.target.value)) {
-        //    setError('Email Cônjuge inválido');
-
-        //} else {
-        //    setError(null);
-        //}
     }
 
     function mudarDataCasamento(event){
@@ -76,7 +43,7 @@ function Cadastro() {
 
     function mudarTelefone(event){
         setUser(({...user,telefone: event.target.value }))
-    } 
+    }
 
     function mudarCidade(event){
         setUser(({...user,cidade: event.target.value }))
@@ -87,16 +54,18 @@ function Cadastro() {
     }
 
     function liberaBotao() {
-        if (user.nome.length != 0 && user.email == user.email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\)?$/i) && user.senha == user.senha.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/i) && user.emailConjuge == user.emailConjuge.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\)?$/i) && user.nomeConjuge.length != 0 && user.enderecoSite.length != 0 && user.cidade.length != 0 && user.estado.length != 0 && user.telefone.length >= 11 && user.dataCasamento.length != 0) {
-            document.getElementById('botaodis').removeAttribute("disabled");
+        if (user.nome.length == 0 && user.email != user.email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\)?$/i) && /*user.senha.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i) &&*/ user.emailConjuge != user.emailConjuge.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\)?$/i) && user.nomeConjuge.length == 0 && user.enderecoSite.length == 0 && user.cidade.length == 0 && user.estado.length != 0 && user.telefone.length < 11 && user.dataCasamento.length == 0) {
+            //document.getElementById('botaologin').setAttribute('disabled');
+            document.getElementById("botaologin").style.display = "none"
         }
-        //else {
-        //    document.getElementById('botaodis').setAttribute("disabled","disabled");
-        //}
+
+        if (user.nome.length != 0 && user.email == user.email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\)?$/i) && user.senha.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i) && user.emailConjuge == user.emailConjuge.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\)?$/i) && user.nomeConjuge.length != 0 && user.enderecoSite.length != 0 && user.cidade.length != 0 && user.estado.length != 0 && user.telefone.length >= 11 && user.dataCasamento.length != 0) {
+            //document.getElementById('botaologin').removeAttribute('disabled');
+            document.getElementById("botaologin").style.display = "block"
+        }
     }
 
     const Submit = (event) =>{
-
         event.preventDefault()
 
         const usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -105,12 +74,10 @@ function Cadastro() {
                 return true
             }
             return false
-        })
-
-        if (usuarioExistente == true ) {
+    })
+        if(usuarioExistente == true ){
             alert("Usuário já existe")
-
-        } else {
+        }else{
             var novoUsuario
             if (usuarios){
                 novoUsuario = [...usuarios,{user}]
@@ -129,7 +96,7 @@ function Cadastro() {
                 <h1>Cadastro</h1>
                 <h4>Dados pessoais</h4>
                 <form action="" className="row">
-                    <BasicExample change={(e)=>mudarNome(e)} title1="Nome completo" type="text" id="name" class="mb-3 col-12"/>
+                    <BasicExample change={(e)=>mudarNome(e)} title1="Nome completo" type="text" id="nome" class="mb-3 col-12"/>
                     <BasicExample change={(e)=>mudarTelefone(e)} title1="Telefone" type="number" id="telefone" class="mb-3 col-12" />
                     <BasicExample change={(e)=>mudarEmail(e)} title1="E-mail" type="email" id="email" class="mb-3 col-6" />
                     <BasicExample change={(e)=>mudarSenha(e)} title1="Senha" type="password" id="senha" class="mb-3 col-5" />
@@ -154,14 +121,9 @@ function Cadastro() {
                     </div>
                 </form>
 
-                {error && <h5 style={{color: 'red'}}>{error}</h5>} 
-
-                <TypesExampleDis id="botaodis" funcao={liberaBotao()} click={(e)=>Submit(e)} botao="Quero criar meu site!" className="botaologin"/>
-                            
+                <TypesExampleDis funcao={liberaBotao()} click={(e)=>Submit(e)} botao="Quero criar meu site!"  />
             </div>
         </div>
-
-        
     )
 }
 
